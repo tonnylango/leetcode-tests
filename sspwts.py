@@ -8,19 +8,18 @@ def method(array, target):
     if sum(array) == target:
         return [array]
 
-    answers = []  # Initialize list answers
+    answers = set()  # Initialize list answers
 
     for number in array:
         remaining_array = array.copy()
         remaining_array.remove(number)
         returned_answers = method(remaining_array, target - number)
-        print("returned_answers", returned_answers, "for array ", array, " target ", target)
         for returned_answer in returned_answers:
-            print("returned_answer ", returned_answer, type(returned_answer))
             returned_answer.append(number)
             if sum(returned_answer) == target:
-                answers.append(returned_answer)
-    
+                answers.add(tuple(returned_answer)) #convert the list to a tuple to make it hashable and then add it to answers
+
+    answers = [list(sublist) for sublist in answers]
     return answers
 
 import sys
