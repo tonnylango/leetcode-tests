@@ -1,23 +1,5 @@
 import re
 
-def is_alphabetical(string):
-    pattern = r'^[a-z]+$'
-    return re.match(pattern, string) is not None
-
-# Example usage
-string1 = "hello"
-string2 = "Hello"
-string3 = "123abc"
-string4 = "aBc"
-string5 = "abc123"
-
-print(is_alphabetical(string1))  # True
-print(is_alphabetical(string2))  # False
-print(is_alphabetical(string3))  # False
-print(is_alphabetical(string4))  # False
-print(is_alphabetical(string5))  # False
-
-import re
 
 def camel_to_snake_case(camel_str):
     snake_str = re.sub(r'(?<!^)(?=[A-Z])', '_', camel_str).lower()
