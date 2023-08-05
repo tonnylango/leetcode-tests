@@ -61,3 +61,19 @@ class Solution(object):
             p = p.next
 
         return result_node
+
+#solution 2
+class Solution(object):
+    def addTwoNumbers(self, l1, l2):
+        results = ListNode(0)
+        pointer = results
+        carry = 0
+
+        while l1 or l2 or carry:
+            sum = (l1.val if l1 else 0) + (l2.val if l2 else 0) + carry
+            carry = sum // 10
+            pointer.next = ListNode(sum % 10)
+            pointer = pointer.next
+            l1, l2 = l1.next if l1 else None, l2.next if l2 else None
+
+        return results.next
